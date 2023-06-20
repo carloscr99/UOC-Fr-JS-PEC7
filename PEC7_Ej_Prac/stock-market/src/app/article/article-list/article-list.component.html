@@ -1,0 +1,18 @@
+
+<div class="body">
+    <div class="row">
+        <input type="text" placeholder="Buscar..." id="busqueda"  class="form-control" [(ngModel)]="searchString" (keyup)="buscarArticulo()">
+    </div>
+    
+    <div class="row">
+        <div *ngFor="let article of articles$ | async">
+    
+            <article-item [article]="article"></article-item>
+        
+        </div>
+        
+    </div>
+    
+    
+</div>
+
