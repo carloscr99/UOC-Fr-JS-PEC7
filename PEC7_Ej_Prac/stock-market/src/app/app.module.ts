@@ -10,6 +10,7 @@ import { ArticleNewTemplateComponent } from './article/article-new-template/arti
 import { ArticleNewReactiveComponent } from './article/article-new-reactive/article-new-reactive.component';
 import { HttpClientModule } from '@angular/common/http'; 
 import { imageUrlPipe } from './imageUrl.pipe';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -19,8 +20,9 @@ import { imageUrlPipe } from './imageUrl.pipe';
     NavbarComponent,
     ArticleNewTemplateComponent,
     ArticleNewReactiveComponent,
-    imageUrlPipe
-  ],
+    imageUrlPipe,
+    LoginComponent
+    ],
   imports: [
     BrowserModule,
     FormsModule,
