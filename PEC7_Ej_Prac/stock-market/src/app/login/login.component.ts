@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { User } from '../user/User';
 import { FormBuilder, Validators } from '@angular/forms';
+import { UserService } from '../services/user-service.service';
 
 @Component({
   selector: 'login',
@@ -11,8 +12,9 @@ export class LoginComponent {
 
 
   public user: User | undefined;
+  public mensaje: String = "";
 
-  constructor(private fb: FormBuilder){
+  constructor(private userService: UserService, private fb: FormBuilder){
     this.initializeUser();
   }
 
@@ -38,8 +40,21 @@ export class LoginComponent {
         password: this.loginForm.value.password ?? '',
         token: ''
       }
-
       console.log("Formulario válido -> ", user);
+
+      this.userService.login(user).subscribe((result) =>{
+
+        this.mensaje = result.msg;
+
+        console.log("Resultado login: " , this.mensaje);
+
+      }, (error => {
+        this.mensaje = error.msg;
+        console.log("Resultado login: " , this.mensaje);
+      }));
+
+     
+
 
     }
     else{
