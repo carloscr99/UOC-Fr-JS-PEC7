@@ -11,6 +11,7 @@ import { ArticleNewReactiveComponent } from './article/article-new-reactive/arti
 import { HttpClientModule } from '@angular/common/http'; 
 import { imageUrlPipe } from './imageUrl.pipe';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { LoginComponent } from './login/login.component';
     ArticleNewTemplateComponent,
     ArticleNewReactiveComponent,
     imageUrlPipe,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
     ],
   imports: [
     BrowserModule,

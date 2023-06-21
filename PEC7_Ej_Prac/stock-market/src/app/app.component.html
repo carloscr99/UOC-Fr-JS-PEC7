@@ -331,9 +331,15 @@
 
 <div class="content" role="main">
 
-  <div *ngIf="opcionSeleccionada === 'login' || opcionSeleccionada === ''">
+  <div *ngIf="opcionSeleccionada === 'login'">
     <login/>
   </div>
+
+
+  <div *ngIf="opcionSeleccionada === 'register' || opcionSeleccionada === ''">
+    <register/>
+  </div>
+
 
   <div *ngIf="opcionSeleccionada === 'articulos'">
     <article-list/>

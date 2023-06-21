@@ -1,0 +1,31 @@
+<h2>Register:</h2>
+
+<div class="formGroup">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="user-name">
+            <input type="text" placeholder="Usuario" class="form-control"
+            name="userName" formControlName="name">
+        </div>
+        <div *ngIf="registerForm.controls.name.invalid && (registerForm.controls.name.dirty || registerForm.controls.name.touched)">
+            <div *ngIf="registerForm.controls.name.errors?.['required']">
+              <p class="msgError">
+                El nombre de usuario es necesario
+              </p>
+            </div>
+        </div>
+        <div class="user-password">
+            <input type="password" placeholder="Password" class="form-control"
+            name="userPassword" formControlName="password">
+        </div>
+        <div *ngIf="registerForm.controls.password.invalid && (registerForm.controls.password.dirty || registerForm.controls.password.touched)">
+            <div *ngIf="registerForm.controls.password.errors?.['required']">
+              <p class="msgError">
+                La contraseña es requerida
+              </p>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-sm btn-success">Registarse</button>
+    </form>
+
+
+</div>
