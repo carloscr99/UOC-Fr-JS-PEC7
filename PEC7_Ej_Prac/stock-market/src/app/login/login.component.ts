@@ -11,14 +11,10 @@ import { UserService } from '../services/user-service.service';
 export class LoginComponent {
 
 
-  public user: User | undefined;
+  public user: User;
   public mensaje: String = "";
 
   constructor(private userService: UserService, private fb: FormBuilder){
-    this.initializeUser();
-  }
-
-  initializeUser(){
     this.user = {
       user: "",
       password: "",
@@ -45,8 +41,8 @@ export class LoginComponent {
       this.userService.login(user).subscribe((result) =>{
 
         this.mensaje = result.msg;
-
-        console.log("Resultado login: " , this.mensaje);
+        this.user.token = result.token;
+        console.log("Resultado login: " , result);
 
       }, (error => {
         this.mensaje = error.msg;
