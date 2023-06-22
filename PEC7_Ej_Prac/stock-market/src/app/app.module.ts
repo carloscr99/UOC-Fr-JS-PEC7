@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { imageUrlPipe } from './imageUrl.pipe';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { ArticleDetailComponent } from './article/article-detail/article-detail.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { RegisterComponent } from './register/register.component';
     ArticleNewReactiveComponent,
     imageUrlPipe,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ArticleDetailComponent
     ],
   imports: [
     BrowserModule,

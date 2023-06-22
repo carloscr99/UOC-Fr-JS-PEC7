@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Article } from './article/article-item/Article';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,7 @@ export class AppComponent {
     console.log('Opción seleccionada:', opcion);
 
     this.opcionSeleccionada = opcion;
-    // ...
+ 
   }
 
 }

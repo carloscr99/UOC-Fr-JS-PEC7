@@ -39,5 +39,13 @@ export class ArticleListComponent implements OnInit {
     this.searchTerms.next(this.searchString);
   }
 
+    articuloSeleccionado(article: Article){
+    console.log("articuloSeleccionado en article-list.component.ts -> ", article );
+
+
+
+  }
+
+
 
 }

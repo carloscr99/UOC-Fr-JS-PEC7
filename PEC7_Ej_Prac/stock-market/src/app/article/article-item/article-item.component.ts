@@ -2,6 +2,7 @@ import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy  } from
 import { Article } from './Article';
 import { ArticleQuantityChange } from './ArticleQuantityChange';
 import { ArticleService } from 'src/app/services/article-service.service';
+import { ArticleDetailComponent } from '../article-detail/article-detail.component';
 
 @Component({
   selector: 'article-item',
@@ -10,7 +11,7 @@ import { ArticleService } from 'src/app/services/article-service.service';
 
     <div class="article" [ngStyle]="{'background-color': article.isOnSale ? 'transparet' : 'rgb(255 173 154)'}">
         <div class="row">
-            <img [src]="article.imageUrl | imageUrl" style="width: 20vw;" />
+            <img [src]="article.imageUrl | imageUrl" style="width: 20vw;" (click)="onImageClicked(article)" />
         </div>
         <div class="row">
             <div class="col">
@@ -76,6 +77,11 @@ import { ArticleService } from 'src/app/services/article-service.service';
     label.outOfStock {
         color: gray;
     }
+
+    img:hover {
+        cursor: pointer;
+    }
+
   `],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -89,12 +95,16 @@ export class ArticleItemComponent {
 
   @Output() private articleChanged!: EventEmitter<ArticleQuantityChange>;
 
+  @Output() private imageClicked: EventEmitter<Article>;
+
 
   constructor(private articleService: ArticleService ) {
 
     this.newArticle = new ArticleQuantityChange();
 
     this.articleChanged = new EventEmitter<ArticleQuantityChange>();
+
+    this.imageClicked = new EventEmitter<Article>();
 
   }
 
@@ -138,5 +148,12 @@ export class ArticleItemComponent {
 
   }
 
+  onImageClicked(value: Article){
+
+    this.imageClicked.emit(value);
+
+    console.log("onImageClicked -> ", value);
+
+  }
 
 }

@@ -336,13 +336,13 @@
   </div>
 
 
-  <div *ngIf="opcionSeleccionada === 'register' || opcionSeleccionada === ''">
+  <div *ngIf="opcionSeleccionada === 'register' ">
     <register/>
   </div>
 
 
-  <div *ngIf="opcionSeleccionada === 'articulos'">
-    <article-list/>
+  <div *ngIf="opcionSeleccionada === 'articulos' || opcionSeleccionada === ''">
+    <article-list />
   </div>
   
   <div *ngIf="opcionSeleccionada === 'art-new-template'  ">
