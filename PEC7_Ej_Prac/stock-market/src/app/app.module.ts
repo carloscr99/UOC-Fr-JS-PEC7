@@ -13,6 +13,7 @@ import { imageUrlPipe } from './imageUrl.pipe';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ArticleDetailComponent } from './article/article-detail/article-detail.component';
+import { AppRoutesModule } from './app-routes.module';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ArticleDetailComponent } from './article/article-detail/article-detail.
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
