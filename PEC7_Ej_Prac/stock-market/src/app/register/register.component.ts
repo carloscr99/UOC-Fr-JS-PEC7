@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { UserService } from '../services/user-service.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { User } from '../user/User';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'register',
@@ -13,7 +14,7 @@ export class RegisterComponent {
   public user: User;
   public mensaje: String = '';
 
-  constructor(private userService: UserService, private fb: FormBuilder){
+  constructor(private userService: UserService, private fb: FormBuilder, private router: Router){
     this.user = {
       user: '',
       password: '',
@@ -47,6 +48,7 @@ export class RegisterComponent {
         this.mensaje = result.msg;
         this.user.token = result.token;
 
+        this.router.navigate(['login']);
 
       }, (error =>{
         this.mensaje = error.msg;

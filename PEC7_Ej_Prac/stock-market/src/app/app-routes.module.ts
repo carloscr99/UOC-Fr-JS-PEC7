@@ -10,11 +10,12 @@ import { ArticleDetailComponent } from './article/article-detail/article-detail.
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full' },    
-  {path: 'login', component: LoginComponent},
+  {path: 'login', component: LoginComponent}, 
   {path: 'register' , component: RegisterComponent},
   {path: 'article/list', component: ArticleListComponent},
   {path: 'article/create', component: ArticleNewReactiveComponent},
-  {path: 'article/:id', component: ArticleDetailComponent}
+  {path: 'article/:id', component: ArticleDetailComponent},
+  {path: '**', redirectTo: '/register' } //ruta por si escriben algo que no existe en la url   
 ]
 
 

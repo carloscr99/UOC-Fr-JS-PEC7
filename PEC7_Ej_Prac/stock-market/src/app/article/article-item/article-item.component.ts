@@ -3,6 +3,7 @@ import { Article } from './Article';
 import { ArticleQuantityChange } from './ArticleQuantityChange';
 import { ArticleService } from 'src/app/services/article-service.service';
 import { ArticleDetailComponent } from '../article-detail/article-detail.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'article-item',
@@ -98,7 +99,7 @@ export class ArticleItemComponent {
   @Output() private imageClicked: EventEmitter<Article>;
 
 
-  constructor(private articleService: ArticleService ) {
+  constructor(private articleService: ArticleService, private router: Router) {
 
     this.newArticle = new ArticleQuantityChange();
 
@@ -152,7 +153,9 @@ export class ArticleItemComponent {
 
     this.imageClicked.emit(value);
 
-    console.log("onImageClicked -> ", value);
+    console.log("onImageClicked artic -> ", value);
+
+    this.router.navigate(['article/' + value.id]);
 
   }
 

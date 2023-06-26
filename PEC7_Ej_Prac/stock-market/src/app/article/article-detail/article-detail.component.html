@@ -1,1 +1,26 @@
-<p>article-detail works!</p>
+<div *ngIf="article">
+
+    <div class="row">
+        <img src="{{article.imageUrl}}" alt="Imagen Producto" />
+        <p>{{article.name }}</p>
+    </div>
+    <div class="row">
+        <div class="col">
+            <label for="price">Precio:</label>
+        </div>
+        <div class="col">
+            <p id="price">{{article.price}}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <label for="isOnSale">Artículo en venta? </label>
+        </div>
+        <div class="col">
+            <p id="isOnSale" *ngIf="article.isOnSale">Si</p>
+            <p id="isOnSale" *ngIf="!article.isOnSale">No</p>
+        
+        </div>
+    </div>
+
+</div>
