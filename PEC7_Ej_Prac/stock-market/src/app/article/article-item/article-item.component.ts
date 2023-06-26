@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 
     <div class="article" [ngStyle]="{'background-color': article.isOnSale ? 'transparet' : 'rgb(255 173 154)'}">
         <div class="row">
-            <img [src]="article.imageUrl | imageUrl" style="width: 20vw;" (click)="onImageClicked(article)" />
+            <img [src]="article.imageUrl | imageUrl" style="width: 20vw;" (click)="onImageClicked(article.id)" />
         </div>
         <div class="row">
             <div class="col">
@@ -96,16 +96,12 @@ export class ArticleItemComponent {
 
   @Output() private articleChanged!: EventEmitter<ArticleQuantityChange>;
 
-  @Output() private imageClicked: EventEmitter<Article>;
-
 
   constructor(private articleService: ArticleService, private router: Router) {
 
     this.newArticle = new ArticleQuantityChange();
 
     this.articleChanged = new EventEmitter<ArticleQuantityChange>();
-
-    this.imageClicked = new EventEmitter<Article>();
 
   }
 
@@ -149,13 +145,9 @@ export class ArticleItemComponent {
 
   }
 
-  onImageClicked(value: Article){
+  onImageClicked(value: number){
 
-    this.imageClicked.emit(value);
-
-    console.log("onImageClicked artic -> ", value);
-
-    this.router.navigate(['article/' + value.id]);
+    this.router.navigate(['article/' + value]);
 
   }
 

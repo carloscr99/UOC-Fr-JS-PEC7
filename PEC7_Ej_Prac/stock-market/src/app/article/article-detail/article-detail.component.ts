@@ -11,8 +11,6 @@ import { Observable, map } from 'rxjs';
 })
 export class ArticleDetailComponent {
 
-  //@Input() article!: Article;
-
   public articles: Article[] = Array<Article>();
   public articles$: Observable<Article[]> = new Observable<Article[]>;
   public article: Article | undefined;
