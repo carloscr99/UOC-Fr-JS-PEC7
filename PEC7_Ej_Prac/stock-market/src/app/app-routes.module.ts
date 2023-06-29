@@ -6,6 +6,7 @@ import { RegisterComponent } from './register/register.component';
 import { ArticleListComponent } from './article/article-list/article-list.component';
 import { ArticleNewReactiveComponent } from './article/article-new-reactive/article-new-reactive.component';
 import { ArticleDetailComponent } from './article/article-detail/article-detail.component';
+import { AuthGuard } from './guards/auth.guard';
 
 
 const appRoutes: Routes = [
@@ -13,8 +14,8 @@ const appRoutes: Routes = [
   {path: 'login', component: LoginComponent}, 
   {path: 'register' , component: RegisterComponent},
   {path: 'article/list', component: ArticleListComponent},
-  {path: 'article/create', component: ArticleNewReactiveComponent},
-  {path: 'article/:id', component: ArticleDetailComponent},
+  {path: 'article/create', component: ArticleNewReactiveComponent, canActivate: [AuthGuard] },
+  {path: 'article/:id', component: ArticleDetailComponent, canActivate: [AuthGuard] },
   {path: '**', redirectTo: '/register' } //ruta por si escriben algo que no existe en la url   
 ]
 

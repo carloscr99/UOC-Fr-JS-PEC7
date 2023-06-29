@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { User } from '../user/User';
 import { FormBuilder, Validators } from '@angular/forms';
 import { UserService } from '../services/user-service.service';
+import { Router } from '@angular/router';
+import { UserStoreService } from '../services/user-store.service';
 
 @Component({
   selector: 'login',
@@ -14,7 +16,7 @@ export class LoginComponent {
   public user: User;
   public mensaje: String = "";
 
-  constructor(private userService: UserService, private fb: FormBuilder){
+  constructor(private userService: UserService, private fb: FormBuilder, private router: Router, private userStoreService: UserStoreService){
     this.user = {
       user: "",
       password: "",
@@ -43,6 +45,10 @@ export class LoginComponent {
         this.mensaje = result.msg;
         this.user.token = result.token;
         console.log("Resultado login: " , result);
+
+        this.userStoreService.setCurrentUser(this.user);
+
+        this.router.navigate(['article/list']);
 
       }, (error => {
         this.mensaje = error.msg;
