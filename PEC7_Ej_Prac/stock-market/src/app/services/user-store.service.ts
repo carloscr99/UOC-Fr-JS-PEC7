@@ -14,7 +14,8 @@ export class UserStoreService {
 
   setCurrentUser(user: User): void{
     this.currentUser = user;
-    console.log('UserStoreService ->', this.currentUser);
+    console.log('UserStoreService ->', this.currentUser.token);
+    localStorage['userToken'] = this.currentUser.token;
   }
 
   isLoggedIn(): boolean{

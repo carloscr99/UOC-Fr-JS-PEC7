@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { User } from '../user/User';
 import { FormBuilder, Validators } from '@angular/forms';
 import { UserService } from '../services/user-service.service';
@@ -10,7 +10,7 @@ import { UserStoreService } from '../services/user-store.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
 
   public user: User;
@@ -22,6 +22,18 @@ export class LoginComponent {
       password: "",
       token: ""
     }
+  }
+
+  ngOnInit(){
+    let userToken = localStorage['userToken'];
+
+    if(userToken !== null || userToken !== undefined){
+      this.user.token = userToken;
+      this.userStoreService.setCurrentUser(this.user);
+      this.router.navigate(['article/create']);
+    }
+
+
   }
 
   loginForm = this.fb.group({
