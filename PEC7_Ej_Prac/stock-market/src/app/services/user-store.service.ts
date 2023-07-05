@@ -6,10 +6,14 @@ import { User } from '../user/User';
 })
 export class UserStoreService {
 
-  private currentUser: User | null;
+  private currentUser: User;
   
   constructor() { 
-    this.currentUser = null;
+    this.currentUser = {
+      user: '',
+      password: '',
+      token: ''
+    };
   }
 
   setCurrentUser(user: User): void{
@@ -20,9 +24,9 @@ export class UserStoreService {
 
   isLoggedIn(): boolean{
 
-    console.log('isLoggedIn ->', this.currentUser)
+    console.log('isLoggedIn ->', this.currentUser.token)
 
-    return this.currentUser?.token !== '' && this.currentUser !== null;
+    return this.currentUser.token !== '' && this.currentUser.token !== undefined;
 
   }
 

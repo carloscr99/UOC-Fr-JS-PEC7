@@ -27,13 +27,14 @@ export class LoginComponent implements OnInit {
   ngOnInit(){
     let userToken = localStorage['userToken'];
 
-    if(userToken !== null || userToken !== undefined){
+    console.log('LoginComponent -> ', userToken);
+
+    if(userToken !== 'undefined'){
       this.user.token = userToken;
       this.userStoreService.setCurrentUser(this.user);
       this.router.navigate(['article/create']);
     }
-
-
+  
   }
 
   loginForm = this.fb.group({
