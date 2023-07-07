@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, PreloadAllModules  } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ArticleListComponent } from './article/article-list/article-list.component';
@@ -11,12 +11,14 @@ import { AuthGuard } from './guards/auth.guard';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full' },    
-  {path: 'login', component: LoginComponent}, 
-  {path: 'register' , component: RegisterComponent},
-  {path: 'article/list', component: ArticleListComponent},
-  {path: 'article/create', component: ArticleNewReactiveComponent, canActivate: [AuthGuard] },
-  {path: 'article/:id', component: ArticleDetailComponent, canActivate: [AuthGuard] },
-  {path: '**', redirectTo: '/register' } //ruta por si escriben algo que no existe en la url   
+  // {path: 'login', component: LoginComponent}, 
+  // {path: 'register' , component: RegisterComponent},
+  // {path: 'article/list', component: ArticleListComponent},
+  // {path: 'article/create', component: ArticleNewReactiveComponent, canActivate: [AuthGuard] },
+  // {path: 'article/:id', component: ArticleDetailComponent, canActivate: [AuthGuard] },
+    {path: 'article', loadChildren: () => import('./article/article.module').then(m => m.ArticleModule)},
+    {path: 'user', loadChildren: () => import('./user/user.module').then(m => m.UserModule)},
+  {path: '**', redirectTo: 'user/register' } //ruta por si escriben algo que no existe en la url   
 ]
 
 

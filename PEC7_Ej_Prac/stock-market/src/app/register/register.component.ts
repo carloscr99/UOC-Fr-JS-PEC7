@@ -40,15 +40,13 @@ export class RegisterComponent {
          token: ''
       }
 
-      console.log("usuario: ", this.user);
-
       this.userService.register(this.user).subscribe((result) =>{
         
         console.log(result);
         this.mensaje = result.msg;
         this.user.token = result.token;
 
-        this.router.navigate(['login']);
+        this.router.navigate(['user/login']);
 
       }, (error =>{
         this.mensaje = error.msg;
