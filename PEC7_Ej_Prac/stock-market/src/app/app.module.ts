@@ -16,20 +16,14 @@ import { ArticleDetailComponent } from './article/article-detail/article-detail.
 import { AppRoutesModule } from './app-routes.module';
 import { AuthGuard } from './guards/auth.guard';
 import { ArticleAppInterceptor } from './services/article-app.interceptor';
+import { ImageUrlPipeModule } from './image-url.pipe.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ArticleItemComponent,
-    ArticleListComponent,
+    AppComponent, 
     NavbarComponent,
-    ArticleNewTemplateComponent,
-    ArticleNewReactiveComponent,
-    imageUrlPipe,
-    LoginComponent,
-    RegisterComponent,
-    ArticleDetailComponent
-    ],
+    ArticleNewTemplateComponent
+  ],
   imports: [
     BrowserModule,
     FormsModule,

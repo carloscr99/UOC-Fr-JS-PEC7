@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy  } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy, NgModule  } from '@angular/core';
 import { Article } from './Article';
 import { ArticleQuantityChange } from './ArticleQuantityChange';
 import { ArticleService } from 'src/app/services/article-service.service';
@@ -84,8 +84,10 @@ import { Router } from '@angular/router';
     }
 
   `],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+ 
 })
+
 
 
 export class ArticleItemComponent {
