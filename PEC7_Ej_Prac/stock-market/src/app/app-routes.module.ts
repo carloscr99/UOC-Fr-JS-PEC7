@@ -10,14 +10,9 @@ import { AuthGuard } from './guards/auth.guard';
 
 
 const appRoutes: Routes = [
-  {path: '', redirectTo: '/login', pathMatch: 'full' },    
-  // {path: 'login', component: LoginComponent}, 
-  // {path: 'register' , component: RegisterComponent},
-  // {path: 'article/list', component: ArticleListComponent},
-  // {path: 'article/create', component: ArticleNewReactiveComponent, canActivate: [AuthGuard] },
-  // {path: 'article/:id', component: ArticleDetailComponent, canActivate: [AuthGuard] },
-    {path: 'article', loadChildren: () => import('./article/article.module').then(m => m.ArticleModule)},
-    {path: 'user', loadChildren: () => import('./user/user.module').then(m => m.UserModule)},
+  {path: '', redirectTo: 'user/login', pathMatch: 'full' },    
+  {path: 'article', loadChildren: () => import('./article/article.module').then(m => m.ArticleModule)},
+  {path: 'user', loadChildren: () => import('./user/user.module').then(m => m.UserModule)},
   {path: '**', redirectTo: 'user/register' } //ruta por si escriben algo que no existe en la url   
 ]
 
